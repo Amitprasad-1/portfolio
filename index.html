@@ -713,7 +713,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
       <p class="section-sub reveal d2">Real-world applications built with modern technologies.</p>
     </div>
     <div class="projects-grid">
-      <div class="project-card reveal d1" onclick="openDayMarkModal(event)">
+      <div class="project-card reveal d1" onclick="openProjectModal('daymark', event)">
         <div class="project-card-bg"></div>
         <div class="project-head">
           <div class="project-icon"><img src="daymark-logo.png" alt="DayMark Logo"/></div>
@@ -728,7 +728,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
         <div class="project-desc">A full-stack year progression tracker and deep-work suite featuring an interactive 365-day calendar heatmap, focus timer with ambient soundscapes, and habit tracking matrix.</div>
         <div class="project-tags"><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>Express</span><span>PostgreSQL</span></div>
       </div>
-      <div class="project-card reveal d2">
+      <div class="project-card reveal d2" onclick="openProjectModal('employee-manager', event)">
         <div class="project-card-bg"></div>
         <div class="project-head">
           <div class="project-icon">🧑‍💼</div>
@@ -743,7 +743,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
         <div class="project-desc">A full-stack employee management system with Spring Boot REST API backend, Angular SPA frontend, and MySQL for persistent storage. Supports complete CRUD operations.</div>
         <div class="project-tags"><span>Angular</span><span>Spring Boot</span><span>MySQL</span><span>REST API</span><span>Postman</span></div>
       </div>
-      <div class="project-card reveal d3">
+      <div class="project-card reveal d3" onclick="openProjectModal('campus-care', event)">
         <div class="project-card-bg"></div>
         <div class="project-head">
           <div class="project-icon">🏫</div>
@@ -758,7 +758,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
         <div class="project-desc">A web-based complaint management platform for campus issues. Fully responsive UI with Bootstrap, live deployed on GitHub Pages for real student use.</div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span><span>GitHub Pages</span></div>
       </div>
-      <div class="project-card reveal d1">
+      <div class="project-card reveal d1" onclick="openProjectModal('car-rental', event)">
         <div class="project-card-bg"></div>
         <div class="project-head">
           <div class="project-icon">🚗</div>
@@ -773,7 +773,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
         <div class="project-desc">Console-based car rental management app built in Java using OOP design principles and Java Collections to handle customers, vehicles and rental transactions.</div>
         <div class="project-tags"><span>Java</span><span>OOP</span><span>Collections</span><span>Console App</span></div>
       </div>
-      <div class="project-card reveal d2">
+      <div class="project-card reveal d2" onclick="openProjectModal('flex-zone', event)">
         <div class="project-card-bg"></div>
         <div class="project-head">
           <div class="project-icon">💪</div>
@@ -788,7 +788,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
         <div class="project-desc">A modern fitness website showcasing workout programs, membership plans, and trainer information. Features responsive design, interactive UI, and seamless experience across all devices.</div>
         <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive Design</span></div>
       </div>
-      <div class="project-card reveal d3">
+      <div class="project-card reveal d3" onclick="openProjectModal('phonezone', event)">
         <div class="project-card-bg"></div>
         <div class="project-head">
           <div class="project-icon">📱</div>
@@ -803,7 +803,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
         <div class="project-desc">A responsive e-commerce platform for smartphone browsing with modern product cards, clean navigation, and optimized user experience. Built with Angular, Spring Boot, and MySQL.</div>
         <div class="project-tags"><span>Angular</span><span>Spring Boot</span><span>MySQL</span><span>REST API</span></div>
       </div>
-      <div class="project-card reveal d1">
+      <div class="project-card reveal d1" onclick="openProjectModal('glowvera', event)">
         <div class="project-card-bg"></div>
         <div class="project-head">
           <div class="project-icon">✂️</div>
@@ -887,27 +887,27 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
   </div>
 </footer>
 
-<!-- PROJECT MODAL (DAYMARK DEEP DIVE) -->
+<!-- PROJECT MODAL (INTERACTIVE DEEP DIVE) -->
 <div id="projectModal" class="project-modal" aria-hidden="true">
   <div class="modal-backdrop" onclick="closeProjectModal()"></div>
   <div class="modal-dialog">
     <div class="modal-header">
       <div class="modal-title-wrap">
-        <div class="modal-icon"><img src="daymark-logo.png" alt="DayMark Logo"/></div>
+        <div class="modal-icon" id="modalIcon"><img src="daymark-logo.png" alt="Project Logo"/></div>
         <div>
-          <div class="modal-title">DayMark</div>
-          <div class="modal-subtitle">Visual Year Tracker & Deep Work Operating System</div>
+          <div class="modal-title" id="modalTitle">DayMark</div>
+          <div class="modal-subtitle" id="modalSubtitle">Visual Year Tracker & Deep Work Operating System</div>
         </div>
       </div>
       <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close modal">✕</button>
     </div>
     <div class="modal-body">
-      <p class="modal-desc">
+      <p class="modal-desc" id="modalDesc">
         A modern productivity SaaS application featuring a 365-day visual heatmap, deep work focus timer with ambient soundscapes, 14-day habit matrix, and dynamic analytics. Built with Next.js 16 (Turbopack), TypeScript, and Tailwind CSS, backed by an Express REST API with Prisma ORM and PostgreSQL. Includes full JSON export/import and offline-first persistence.
       </p>
 
       <div class="modal-section-title">Key Architectural Highlights</div>
-      <ul class="modal-bullets">
+      <ul class="modal-bullets" id="modalBullets">
         <li><strong>365-Day Visual Heatmap Engine:</strong> Architected a dynamic 12-month calendar grid with day-level intensity mapping, quarterly filtering, and real-time year trajectory analytics.</li>
         <li><strong>Cinematic Focus Chronometer & Web Audio Soundscapes:</strong> Built an electric spark animated timer dial with distraction-free Zen Fullscreen mode and procedural white-noise/nature audio generators using the native Web Audio API.</li>
         <li><strong>Interactive Habit Tracking & Goals:</strong> Implemented a 14-day rolling habit matrix with automated streak calculation and quantitative multi-metric goal tracking.</li>
@@ -915,11 +915,11 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
       </ul>
 
       <div class="modal-section-title">Technologies & Tools</div>
-      <div class="modal-tags">
+      <div class="modal-tags" id="modalTags">
         <span>Next.js 16</span><span>TypeScript</span><span>Tailwind CSS</span><span>Framer Motion</span><span>Node.js</span><span>Express</span><span>Prisma ORM</span><span>PostgreSQL</span><span>Web Audio API</span><span>REST API</span><span>Turbopack</span><span>Vercel</span>
       </div>
 
-      <div class="modal-actions">
+      <div class="modal-actions" id="modalActions">
         <a href="https://day-mark-one.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;align-items:center;gap:6px;">Live Demo ↗</a>
         <a href="https://github.com/Amitprasad-1/DayMark" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -1187,15 +1187,177 @@ if(heroPhoto && !isTouchDevice){
   });
 }
 
-// PROJECT MODAL HANDLERS
-function openDayMarkModal(e){
+// PROJECT MODAL DATA & HANDLERS
+const projectsData = {
+  'daymark': {
+    title: 'DayMark',
+    subtitle: 'Visual Year Tracker & Deep Work Operating System',
+    icon: '<img src="daymark-logo.png" alt="DayMark Logo"/>',
+    desc: 'A modern productivity SaaS application featuring a 365-day visual heatmap, deep work focus timer with ambient soundscapes, 14-day habit matrix, and dynamic analytics. Built with Next.js 16 (Turbopack), TypeScript, and Tailwind CSS, backed by an Express REST API with Prisma ORM and PostgreSQL. Includes full JSON export/import and offline-first persistence.',
+    bullets: [
+      '365-Day Visual Heatmap Engine: Architected a dynamic 12-month calendar grid with day-level intensity mapping, quarterly filtering, and real-time year trajectory analytics.',
+      'Cinematic Focus Chronometer & Web Audio Soundscapes: Built an electric spark animated timer dial with distraction-free Zen Fullscreen mode and procedural white-noise/nature audio generators using the native Web Audio API.',
+      'Interactive Habit Tracking & Goals: Implemented a 14-day rolling habit matrix with automated streak calculation and quantitative multi-metric goal tracking.',
+      'Production Architecture & Data Portability: Designed an offline-first dual persistence layer (LocalSync + Express/Prisma PostgreSQL backend) with one-click JSON backup, restore, and zero layout shift responsive navigation.'
+    ],
+    tags: ['Next.js 16', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'Prisma ORM', 'PostgreSQL', 'Web Audio API', 'REST API', 'Turbopack', 'Vercel'],
+    liveDemo: 'https://day-mark-one.vercel.app',
+    github: 'https://github.com/Amitprasad-1/DayMark'
+  },
+  'employee-manager': {
+    title: 'Employee Manager',
+    subtitle: 'Full-Stack Enterprise Personnel & CRUD Management System',
+    icon: '🧑‍💼',
+    desc: 'An enterprise-grade employee management application engineered with a clean decoupled architecture. Featuring an Angular single-page application frontend and a Spring Boot RESTful micro-backend connecting to a relational MySQL database with JPA/Hibernate for robust, transactional data processing.',
+    bullets: [
+      'Enterprise RESTful Service Layer: Engineered layered backend controllers, service interfaces, and data repositories in Spring Boot following strict domain separation of concerns.',
+      'Dynamic Angular Component Architecture: Developed reactive UI views with TypeScript, custom services with RxJS observables for asynchronous HTTP streaming, and real-time state synchronization.',
+      'Relational Persistence & Schema Integrity: Configured MySQL database integration with Spring Data JPA/Hibernate, implementing automatic schema validation, indexed querying, and transactional consistency.',
+      'Full Lifecycle CRUD & Employee Roster: Built intuitive workflows to onboard new hires, update department records, filter staff by position, and safely decommission obsolete profiles with audit safeguards.'
+    ],
+    tags: ['Angular', 'TypeScript', 'Spring Boot', 'Java', 'Hibernate', 'Spring Data JPA', 'MySQL', 'REST API', 'RxJS', 'Postman', 'Vercel'],
+    liveDemo: 'https://employee-manager-backend-nu.vercel.app/login',
+    github: 'https://github.com/Amitprasad-1/EmployeeManager'
+  },
+  'campus-care': {
+    title: 'CampusCare',
+    subtitle: 'Civic & Student Campus Grievance Redressal Portal',
+    icon: '🏫',
+    desc: 'A web-based complaint management platform designed to streamline student issue reporting, maintenance tracking, and administrative grievance redressal across campus departments. Deployed live on GitHub Pages with an accessible, mobile-first design.',
+    bullets: [
+      'Streamlined Incident Intake Engine: Designed accessible form workflows allowing students to quickly categorize, describe, and submit grievances across academic, hostel, and campus infrastructure categories.',
+      'Responsive UI & Mobile Accessibility: Built using semantic HTML5, modern CSS3, and Bootstrap grid systems, ensuring zero-clutter readability across desktop monitors, tablets, and smartphones.',
+      'Client-Side State & Form Validation: Implemented robust JavaScript validation logic to prevent invalid submissions and provide immediate visual feedback to students.',
+      'Lightweight Zero-Dependency Deployment: Optimized asset delivery for production on GitHub Pages with instant loading, low latency, and zero build overhead.'
+    ],
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'Bootstrap 5', 'Responsive Design', 'DOM Manipulation', 'GitHub Pages', 'Git'],
+    liveDemo: 'https://sudipxkarmakar.github.io/CampusCare/',
+    github: 'https://github.com/sudipxkarmakar/CampusCare'
+  },
+  'car-rental': {
+    title: 'Car Rental System',
+    subtitle: 'Object-Oriented Fleet Booking & Rental Ledger Engine',
+    icon: '🚗',
+    desc: 'A modular core Java application demonstrating rigorous Object-Oriented Programming (OOP) design patterns and Java Collections Framework. Manages end-to-end vehicle availability, customer accounts, and rental transaction lifecycle.',
+    bullets: [
+      'Pure OOP Domain Modeling: Applied encapsulation, inheritance, polymorphism, and abstraction to model vehicles (sedans, SUVs, luxury), customer profiles, and rental reservations.',
+      'In-Memory Ledger via Java Collections: Utilized specialized Java data structures (ArrayList, HashMap, HashSet) for fast O(1) vehicle search, status tracking, and reservation indexing.',
+      'Dynamic Billing & Invoice Calculation: Built algorithms computing rental fees based on vehicle tier, rental duration, security deposits, and customized discount rates.',
+      'Defensive Error Handling & Input Validation: Implemented custom Java exception handling and input verification to prevent overbooking, invalid customer IDs, and concurrent reservation collisions.'
+    ],
+    tags: ['Java', 'Object-Oriented Programming', 'Java Collections', 'Data Structures', 'Design Patterns', 'Exception Handling', 'CLI Architecture'],
+    liveDemo: null,
+    github: 'https://github.com/Amitprasad-1/CarRentalSystem'
+  },
+  'flex-zone': {
+    title: 'FlexZone',
+    subtitle: 'High-Performance Fitness & Gym Membership Portal',
+    icon: '💪',
+    desc: 'A modern, visual-first fitness and wellness web application designed to convert prospects into active gym members. Showcases dynamic workout programs, membership pricing tiers, certified trainer profiles, and interactive schedule modules.',
+    bullets: [
+      'Immersive UI/UX & Motion Design: Crafted custom visual themes with glassmorphism cards, vibrant accents, smooth hover micro-animations, and dynamic visual hierarchies.',
+      'Interactive Program Selector: Developed interactive filtering mechanisms enabling visitors to explore strength training, HIIT, yoga, and bodybuilding programs with instant previewing.',
+      'Adaptive Viewport Scaling: Engineered clean responsive media query pipelines ensuring impeccable layout presentation across ultra-wide desktops and mobile screens.',
+      'Performance Optimization: Built with clean vanilla JavaScript and modular CSS for sub-second first contentful paint (FCP) and smooth 60fps scrolling.'
+    ],
+    tags: ['HTML5', 'CSS3', 'JavaScript (ES6+)', 'Modern UI/UX', 'CSS Flexbox & Grid', 'Responsive Layouts', 'Vercel'],
+    liveDemo: 'https://flex-zone-rust.vercel.app/',
+    github: 'https://github.com/Amitprasad-1/FlexZone'
+  },
+  'phonezone': {
+    title: 'PhoneZone Enterprise',
+    subtitle: 'Full-Stack Smartphone E-Commerce & Inventory Platform',
+    icon: '📱',
+    desc: 'A full-stack enterprise e-commerce platform built for smartphone cataloging, specifications comparison, cart management, and inventory tracking. Features an Angular frontend coupled with a Spring Boot REST API and MySQL relational persistence.',
+    bullets: [
+      'Enterprise Catalog & Search Filtering: Implemented dynamic brand, price, and specs querying allowing users to rapidly filter smartphones across multiple parameters.',
+      'Client-Side Cart State & Order Pipeline: Engineered persistent shopping cart state with reactive calculations for taxes, discounts, and item quantities using RxJS and local storage.',
+      'Spring Boot Inventory API: Architected secure RESTful endpoints for CRUD catalog operations, stock level updates, and transaction logging.',
+      'Relational Data Modeling: Designed relational database schemas in MySQL with foreign key relationships linking products, orders, customers, and categories.'
+    ],
+    tags: ['Angular', 'TypeScript', 'Spring Boot', 'Java', 'MySQL', 'Spring Data JPA', 'RESTful APIs', 'RxJS', 'CSS3', 'Vercel'],
+    liveDemo: 'https://phonezone-enterprise.vercel.app/',
+    github: 'https://github.com/Amitprasad-1/phonezone-enterprise'
+  },
+  'glowvera': {
+    title: 'Glowvera',
+    subtitle: 'Luxury Salon, Wellness & Appointment Showcase Platform',
+    icon: '✂️',
+    desc: 'A premium beauty salon and wellness web application tailored to provide clients with a luxurious digital booking and service exploration experience. Built with modern styling, clear service breakdown, transparent pricing, and instant contact channels.',
+    bullets: [
+      'Aesthetic Service Catalog & Price Matrix: Designed categorized beauty treatment menus (hair styling, skincare, bridal, therapies) with interactive tier selection and pricing cards.',
+      'Frictionless Client Inquiry Funnel: Integrated direct booking prompts, opening hours schedules, and one-click contact channels for immediate client conversion.',
+      'Component-Driven Layout Structure: Crafted with Bootstrap component architecture and custom CSS overlays to deliver a polished spa boutique atmosphere.',
+      'Optimized Mobile Experience: Designed mobile-first layouts with smooth touch interactions, sticky call-to-actions, and zero layout shift.'
+    ],
+    tags: ['HTML5', 'CSS3', 'Bootstrap 5', 'JavaScript (ES6+)', 'Responsive Design', 'Boutique UI/UX', 'Vercel'],
+    liveDemo: 'https://glowvera-beta.vercel.app/#/home',
+    github: 'https://github.com/Amitprasad-1/Glowvera'
+  }
+};
+
+function openProjectModal(id, e){
   if(e && e.target && e.target.closest('a')) return;
+  const proj = projectsData[id];
+  if(!proj) return;
+
+  const iconEl = document.getElementById('modalIcon');
+  if(iconEl) iconEl.innerHTML = proj.icon;
+
+  const titleEl = document.getElementById('modalTitle');
+  if(titleEl) titleEl.textContent = proj.title;
+
+  const subEl = document.getElementById('modalSubtitle');
+  if(subEl) subEl.textContent = proj.subtitle;
+
+  const descEl = document.getElementById('modalDesc');
+  if(descEl) descEl.textContent = proj.desc;
+
+  const bulletsEl = document.getElementById('modalBullets');
+  if(bulletsEl){
+    bulletsEl.innerHTML = proj.bullets.map(b => {
+      const idx = b.indexOf(': ');
+      if(idx !== -1){
+        const title = b.substring(0, idx);
+        const detail = b.substring(idx + 2);
+        return `<li><strong>${title}:</strong> ${detail}</li>`;
+      }
+      return `<li>${b}</li>`;
+    }).join('');
+  }
+
+  const tagsEl = document.getElementById('modalTags');
+  if(tagsEl){
+    tagsEl.innerHTML = proj.tags.map(t => `<span>${t}</span>`).join('');
+  }
+
+  const actionsEl = document.getElementById('modalActions');
+  if(actionsEl){
+    let actionsHtml = '';
+    if(proj.liveDemo){
+      actionsHtml += `<a href="${proj.liveDemo}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;align-items:center;gap:6px;">Live Demo ↗</a>`;
+    }
+    if(proj.github){
+      const isPrimary = !proj.liveDemo;
+      const btnClass = isPrimary ? 'btn-primary' : 'btn-secondary';
+      actionsHtml += `<a href="${proj.github}" target="_blank" rel="noopener noreferrer" class="${btnClass}" style="display:inline-flex;align-items:center;gap:8px;">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View on GitHub
+      </a>`;
+    }
+    actionsEl.innerHTML = actionsHtml;
+  }
+
   const modal = document.getElementById('projectModal');
   if(modal){
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
   }
+}
+
+function openDayMarkModal(e){
+  openProjectModal('daymark', e);
 }
 
 function closeProjectModal(){
