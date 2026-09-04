@@ -284,13 +284,44 @@ section{padding:110px 28px;}
 .project-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;position:relative;z-index:1;}
 .project-icon{width:48px;height:48px;border-radius:14px;background:var(--accent-subtle);border:1px solid var(--accent-glow);display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:transform .3s;}
 .project-card:hover .project-icon{transform:rotate(-8deg) scale(1.1);}
+.project-links{display:flex;align-items:center;gap:8px;position:relative;z-index:2;}
+.project-link-btn{width:34px;height:34px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text3);text-decoration:none;transition:all .25s;}
+.project-card:hover .project-link-btn{background:var(--surface);border-color:var(--accent-mid);color:var(--text);}
+.project-link-btn:hover{background:var(--accent) !important;border-color:var(--accent) !important;color:#fff !important;transform:scale(1.08);}
 .project-arrow{width:34px;height:34px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--text3);text-decoration:none;font-size:1rem;transition:all .25s;}
 .project-card:hover .project-arrow{background:var(--accent);border-color:var(--accent);color:#fff;transform:rotate(45deg);}
-.project-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;color:var(--text);margin-bottom:10px;position:relative;z-index:1;letter-spacing:-.01em;}
-.project-desc{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:20px;position:relative;z-index:1;font-weight:400;}
+.project-name{font-family:'Syne',sans-serif;font-weight:700;font-size:1.25rem;color:var(--text);margin-bottom:6px;position:relative;z-index:1;letter-spacing:-.01em;}
+.project-tagline{font-size:.78rem;font-weight:600;color:var(--accent);margin-bottom:12px;letter-spacing:.02em;display:flex;align-items:center;gap:6px;position:relative;z-index:1;}
+.project-tagline::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+.project-desc{font-size:.9rem;color:var(--text2);line-height:1.75;margin-bottom:16px;position:relative;z-index:1;font-weight:400;}
+.project-card-hint{font-size:.73rem;font-weight:600;color:var(--accent);display:inline-flex;align-items:center;gap:5px;margin-bottom:16px;padding:3px 9px;border-radius:6px;background:var(--accent-subtle);border:1px solid var(--accent-glow);position:relative;z-index:1;transition:all .2s;}
+.project-card:hover .project-card-hint{background:var(--accent);color:#fff;border-color:var(--accent);}
 .project-tags{display:flex;flex-wrap:wrap;gap:6px;position:relative;z-index:1;}
 .project-tags span{font-size:.73rem;font-weight:600;padding:4px 11px;border-radius:100px;background:var(--bg2);border:1px solid var(--border);color:var(--text3);transition:all .2s;}
 .project-card:hover .project-tags span{border-color:var(--accent-glow);color:var(--accent);background:var(--accent-subtle);}
+
+/* PROJECT MODAL */
+.project-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.16,1,.3,1);}
+.project-modal.active{opacity:1;pointer-events:auto;}
+.modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,0.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.modal-dialog{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:24px;max-width:700px;width:100%;max-height:90vh;overflow-y:auto;padding:36px;box-shadow:var(--shadow-lg),0 25px 50px -12px rgba(0,0,0,0.3);transform:scale(0.95) translateY(10px);transition:transform .3s cubic-bezier(.16,1,.3,1);z-index:1;}
+.project-modal.active .modal-dialog{transform:scale(1) translateY(0);}
+.modal-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+.modal-title-wrap{display:flex;align-items:center;gap:16px;}
+.modal-icon{width:56px;height:56px;border-radius:16px;background:var(--accent-subtle);border:1px solid var(--accent-glow);display:flex;align-items:center;justify-content:center;font-size:1.9rem;flex-shrink:0;}
+.modal-title{font-family:'Syne',sans-serif;font-size:1.65rem;font-weight:700;color:var(--text);letter-spacing:-.02em;}
+.modal-subtitle{font-size:.85rem;font-weight:600;color:var(--accent);margin-top:3px;letter-spacing:.02em;}
+.modal-close-btn{width:36px;height:36px;border-radius:10px;background:var(--bg2);border:1px solid var(--border);color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .2s;}
+.modal-close-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+.modal-desc{font-size:.95rem;color:var(--text2);line-height:1.75;margin-bottom:24px;}
+.modal-section-title{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:14px;letter-spacing:-.01em;}
+.modal-bullets{list-style:none;padding:0;margin:0 0 24px 0;display:flex;flex-direction:column;gap:12px;}
+.modal-bullets li{position:relative;padding-left:22px;font-size:.88rem;color:var(--text2);line-height:1.65;}
+.modal-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:1rem;top:0;}
+.modal-bullets li strong{color:var(--text);font-weight:600;}
+.modal-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+.modal-tags span{font-size:.75rem;font-weight:600;padding:5px 12px;border-radius:100px;background:var(--accent-subtle);border:1px solid var(--accent-glow);color:var(--accent);}
+.modal-actions{display:flex;gap:14px;flex-wrap:wrap;}
 
 /* EDUCATION */
 #education{background:var(--bg);}
@@ -531,7 +562,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
         <a href="#contact" class="btn-secondary">Get in Touch</a>
       </div>
       <div class="hero-stats">
-        <div class="stat-item"><div class="stat-num" data-count="6" data-suffix="+">0</div><div class="stat-label">Projects Built</div></div>
+        <div class="stat-item"><div class="stat-num" data-count="7" data-suffix="+">0</div><div class="stat-label">Projects Built</div></div>
         <div class="stat-item"><div class="stat-num" data-count="10" data-suffix="+">0</div><div class="stat-label">Technologies</div></div>
         <div class="stat-item"><div class="stat-num" data-count="781" data-suffix="/">0</div><div class="stat-label">CGPA Score</div></div>
       </div>
@@ -612,10 +643,10 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
     </div>
     <div class="skills-grid">
       <div class="skill-cat reveal d1"><div class="skill-cat-head"><div class="skill-cat-icon">💬</div><h4>Languages</h4></div><div class="skill-tags"><span>Java</span><span>JavaScript</span><span>TypeScript</span><span>HTML5</span><span>CSS3</span><span>SQL</span></div></div>
-      <div class="skill-cat reveal d2"><div class="skill-cat-head"><div class="skill-cat-icon">🎨</div><h4>Frontend</h4></div><div class="skill-tags"><span>Angular</span><span>Bootstrap</span><span>Responsive UI</span><span>DOM</span></div></div>
-      <div class="skill-cat reveal d3"><div class="skill-cat-head"><div class="skill-cat-icon">⚙️</div><h4>Backend</h4></div><div class="skill-tags"><span>Spring Boot</span><span>REST APIs</span><span>Spring MVC</span><span>CRUD</span></div></div>
-      <div class="skill-cat reveal d4"><div class="skill-cat-head"><div class="skill-cat-icon">🗄️</div><h4>Database</h4></div><div class="skill-tags"><span>MySQL</span><span>JDBC</span><span>SQL Queries</span></div></div>
-      <div class="skill-cat reveal d5"><div class="skill-cat-head"><div class="skill-cat-icon">🛠️</div><h4>Tools</h4></div><div class="skill-tags"><span>Git</span><span>GitHub</span><span>Postman</span><span>VS Code</span><span>IntelliJ IDEA</span></div></div>
+      <div class="skill-cat reveal d2"><div class="skill-cat-head"><div class="skill-cat-icon">🎨</div><h4>Frontend</h4></div><div class="skill-tags"><span>Next.js</span><span>Angular</span><span>Tailwind CSS</span><span>Bootstrap</span><span>Responsive UI</span><span>DOM</span></div></div>
+      <div class="skill-cat reveal d3"><div class="skill-cat-head"><div class="skill-cat-icon">⚙️</div><h4>Backend</h4></div><div class="skill-tags"><span>Spring Boot</span><span>Node.js</span><span>Express</span><span>REST APIs</span><span>Spring MVC</span><span>CRUD</span></div></div>
+      <div class="skill-cat reveal d4"><div class="skill-cat-head"><div class="skill-cat-icon">🗄️</div><h4>Database</h4></div><div class="skill-tags"><span>PostgreSQL</span><span>Prisma</span><span>MySQL</span><span>JDBC</span><span>SQL Queries</span></div></div>
+      <div class="skill-cat reveal d5"><div class="skill-cat-head"><div class="skill-cat-icon">🛠️</div><h4>Tools</h4></div><div class="skill-tags"><span>Git</span><span>GitHub</span><span>Vercel</span><span>Postman</span><span>VS Code</span><span>IntelliJ IDEA</span></div></div>
       <div class="skill-cat reveal d5"><div class="skill-cat-head"><div class="skill-cat-icon">🧠</div><h4>Concepts</h4></div><div class="skill-tags"><span>OOP</span><span>MVC</span><span>Java Collections</span><span>API Design</span><span>Agile</span></div></div>
     </div>
   </div>
@@ -680,42 +711,59 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
       <p class="section-sub reveal d2">Real-world applications built with modern technologies.</p>
     </div>
     <div class="projects-grid">
-      <div class="project-card reveal d1">
+      <div class="project-card reveal d1" onclick="openDayMarkModal(event)">
+        <div class="project-card-bg"></div>
+        <div class="project-head">
+          <div class="project-icon">🌅</div>
+          <div class="project-links">
+            <a href="https://github.com/Amitprasad-1/DayMark" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub" aria-label="GitHub Repository">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </a>
+            <a href="https://day-mark-one.vercel.app" target="_blank" rel="noopener noreferrer" class="project-arrow" title="Live Demo" aria-label="Live Demo">↗</a>
+          </div>
+        </div>
+        <div class="project-name">DayMark</div>
+        <div class="project-tagline">Visual Year Tracker & Deep Work Operating System</div>
+        <div class="project-desc">A modern productivity SaaS application featuring a 365-day visual heatmap, deep work focus timer with ambient soundscapes, 14-day habit matrix, and dynamic analytics. Built with Next.js 16 (Turbopack), TypeScript, and Tailwind CSS, backed by an Express REST API with Prisma ORM and PostgreSQL. Includes full JSON export/import and offline-first persistence.</div>
+        <div class="project-card-hint"><span>Deep Dive & Architecture</span> <span>🔍</span></div>
+        <div class="project-tags"><span>Next.js</span><span>TypeScript</span><span>Tailwind CSS</span><span>Framer Motion</span><span>Node.js</span><span>Express</span><span>Prisma</span><span>PostgreSQL</span><span>Web Audio API</span><span>REST API</span><span>Vercel</span></div>
+      </div>
+      <div class="project-card reveal d2">
         <div class="project-card-bg"></div>
         <div class="project-head"><div class="project-icon">🧑‍💼</div><a href="https://employee-manager-backend-nu.vercel.app/login" target="_blank" class="project-arrow">↗</a></div>
         <div class="project-name">Employee Manager</div>
         <div class="project-desc">A full-stack employee management system with Spring Boot REST API backend, Angular SPA frontend, and MySQL for persistent storage. Supports complete CRUD operations.</div>
         <div class="project-tags"><span>Angular</span><span>Spring Boot</span><span>MySQL</span><span>REST API</span><span>Postman</span></div>
       </div>
-      <div class="project-card reveal d2">
+      <div class="project-card reveal d3">
         <div class="project-card-bg"></div>
         <div class="project-head"><div class="project-icon">🏫</div><a href="https://sudipxkarmakar.github.io/CampusCare/" target="_blank" class="project-arrow">↗</a></div>
         <div class="project-name">CampusCare</div>
         <div class="project-desc">A web-based complaint management platform for campus issues. Fully responsive UI with Bootstrap, live deployed on GitHub Pages for real student use.</div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>JavaScript</span><span>GitHub Pages</span></div>
       </div>
-      <div class="project-card reveal d3">
+      <div class="project-card reveal d1">
         <div class="project-card-bg"></div>
         <div class="project-head"><div class="project-icon">🚗</div><a href="https://github.com/Amitprasad-1" target="_blank" class="project-arrow">↗</a></div>
         <div class="project-name">Car Rental System</div>
         <div class="project-desc">Console-based car rental management app built in Java using OOP design principles and Java Collections to handle customers, vehicles and rental transactions.</div>
         <div class="project-tags"><span>Java</span><span>OOP</span><span>Collections</span><span>Console App</span></div>
       </div>
-      <div class="project-card reveal d1">
+      <div class="project-card reveal d2">
         <div class="project-card-bg"></div>
         <div class="project-head"><div class="project-icon">💪</div><a href="https://flex-zone-rust.vercel.app/" target="_blank" class="project-arrow">↗</a></div>
         <div class="project-name">FlexZone</div>
         <div class="project-desc">A modern fitness website showcasing workout programs, membership plans, and trainer information. Features responsive design, interactive UI, and seamless experience across all devices.</div>
         <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Responsive Design</span></div>
       </div>
-      <div class="project-card reveal d2">
+      <div class="project-card reveal d3">
         <div class="project-card-bg"></div>
         <div class="project-head"><div class="project-icon">📱</div><a href="https://phonezone-enterprise.vercel.app/" target="_blank" class="project-arrow">↗</a></div>
         <div class="project-name">PhoneZone Enterprise</div>
         <div class="project-desc">A responsive e-commerce platform for smartphone browsing with modern product cards, clean navigation, and optimized user experience. Built with Angular, Spring Boot, and MySQL.</div>
         <div class="project-tags"><span>Angular</span><span>Spring Boot</span><span>MySQL</span><span>REST API</span></div>
       </div>
-      <div class="project-card reveal d3">
+      <div class="project-card reveal d1">
         <div class="project-card-bg"></div>
         <div class="project-head"><div class="project-icon">✂️</div><a href="https://glowvera-beta.vercel.app/#/home" target="_blank" class="project-arrow">↗</a></div>
         <div class="project-name">Glowvera</div>
@@ -790,6 +838,49 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
     </div>
   </div>
 </footer>
+
+<!-- PROJECT MODAL (DAYMARK DEEP DIVE) -->
+<div id="projectModal" class="project-modal" aria-hidden="true">
+  <div class="modal-backdrop" onclick="closeProjectModal()"></div>
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <div class="modal-title-wrap">
+        <div class="modal-icon">🌅</div>
+        <div>
+          <div class="modal-title">DayMark</div>
+          <div class="modal-subtitle">Visual Year Tracker & Deep Work Operating System</div>
+        </div>
+      </div>
+      <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close modal">✕</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc">
+        A modern productivity SaaS application featuring a 365-day visual heatmap, deep work focus timer with ambient soundscapes, 14-day habit matrix, and dynamic analytics. Built with Next.js 16 (Turbopack), TypeScript, and Tailwind CSS, backed by an Express REST API with Prisma ORM and PostgreSQL. Includes full JSON export/import and offline-first persistence.
+      </p>
+
+      <div class="modal-section-title">Key Architectural Highlights</div>
+      <ul class="modal-bullets">
+        <li><strong>365-Day Visual Heatmap Engine:</strong> Architected a dynamic 12-month calendar grid with day-level intensity mapping, quarterly filtering, and real-time year trajectory analytics.</li>
+        <li><strong>Cinematic Focus Chronometer & Web Audio Soundscapes:</strong> Built an electric spark animated timer dial with distraction-free Zen Fullscreen mode and procedural white-noise/nature audio generators using the native Web Audio API.</li>
+        <li><strong>Interactive Habit Tracking & Goals:</strong> Implemented a 14-day rolling habit matrix with automated streak calculation and quantitative multi-metric goal tracking.</li>
+        <li><strong>Production Architecture & Data Portability:</strong> Designed an offline-first dual persistence layer (LocalSync + Express/Prisma PostgreSQL backend) with one-click JSON backup, restore, and zero layout shift responsive navigation.</li>
+      </ul>
+
+      <div class="modal-section-title">Technologies & Tools</div>
+      <div class="modal-tags">
+        <span>Next.js 16</span><span>TypeScript</span><span>Tailwind CSS</span><span>Framer Motion</span><span>Node.js</span><span>Express</span><span>Prisma ORM</span><span>PostgreSQL</span><span>Web Audio API</span><span>REST API</span><span>Turbopack</span><span>Vercel</span>
+      </div>
+
+      <div class="modal-actions">
+        <a href="https://day-mark-one.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-flex;align-items:center;gap:6px;">Live Demo ↗</a>
+        <a href="https://github.com/Amitprasad-1/DayMark" target="_blank" rel="noopener noreferrer" class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 // LOADER
@@ -1047,6 +1138,30 @@ if(heroPhoto && !isTouchDevice){
     }, 1300);
   });
 }
+
+// PROJECT MODAL HANDLERS
+function openDayMarkModal(e){
+  if(e && e.target && e.target.closest('a')) return;
+  const modal = document.getElementById('projectModal');
+  if(modal){
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeProjectModal(){
+  const modal = document.getElementById('projectModal');
+  if(modal){
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeProjectModal();
+});
 </script>
 </body>
 </html>
